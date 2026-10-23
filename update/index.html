@@ -315,6 +315,11 @@ td.dbl{background:color-mix(in srgb,var(--warn) 9%,transparent)}
 .setup-fields .wide{grid-column:1/-1}
 .setup-section textarea{min-height:132px;resize:vertical;font:12px/1.5 var(--f-mono)}
 .setup-section .note{margin:8px 0 0}
+.setup-rgrid{display:grid;grid-template-columns:minmax(90px,1fr) repeat(3,minmax(54px,80px));gap:6px 8px;align-items:center;font-size:12.5px}
+.setup-rgrid b{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.setup-rgrid input{width:100%;min-width:0;box-sizing:border-box;font-family:var(--f-mono)}
+.setup-or{align-self:center;margin:0 2px}
+#setup-import-msg:empty{display:none}
 .setup-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
 .setup-footer .note{margin:0}
 @media(max-width:680px){.setup-gate{align-items:start;padding:8px}.setup-card{max-height:none}.setup-grid{grid-template-columns:1fr}.setup-fields{grid-template-columns:1fr}.setup-fields .wide{grid-column:auto}.setup-footer{align-items:stretch;flex-direction:column}}
@@ -748,12 +753,12 @@ s_backup:['Сохранить резервную копию','Save backup','Guar
 s_clean:['Начать с чистого листа','Start from scratch','Empezar de cero'],s_clean_confirm:['Нажмите ещё раз — всё будет удалено','Click again — everything will be deleted','Pulse otra vez: se borrará todo'],s_example:['Загрузить пример','Load example data','Cargar datos de ejemplo'],s_example_confirm:['Нажмите ещё раз — текущие данные заменятся','Click again — current data will be replaced','Pulse otra vez: se reemplazarán los datos'],
 s_cleaned:['Данные очищены. Укажите район и дом, затем добавьте собрания или импортируйте PDF / CSV.','Data cleared. Set your circuit and home, then add congregations or import a PDF / CSV.','Datos borrados. Indique su circuito y su casa, y luego añada congregaciones o importe un PDF / CSV.'],
 s_restored:['Данные восстановлены из копии.','Data restored from backup.','Datos restaurados de la copia.'],s_restore_fail:['Это не похоже на резервную копию маршрута.','This doesn’t look like a route backup.','Esto no parece una copia de seguridad de ruta.'],
-wl_title:['Это пример — вымышленный район','This is example data for a made-up circuit','Estos son datos de ejemplo de un circuito ficticio'],wl_text:['Можно посмотреть, как всё работает, или сразу начать со своим районом: укажите район, язык и дом в настройках, затем импортируйте свой PDF маршрута или CSV.','Look around to see how it works, or start with your own circuit: set the circuit, language and home in Settings, then import your routing PDF or CSV.','Puede explorar cómo funciona o empezar con su circuito: indique el circuito, el idioma y su casa en Ajustes y luego importe su PDF de ruta o CSV.'],
+wl_title:['Это пример — вымышленный район','This is example data for a made-up circuit','Estos son datos de ejemplo de un circuito ficticio'],wl_text:['Можно посмотреть, как всё работает. Когда будете готовы, нажмите «Начать со своим районом» — откроется мастер настройки, где можно загрузить свой PDF маршрута.','Look around to see how it works. When you’re ready, click “Start with my circuit” to open the setup, where you can load your routing PDF.','Explore cómo funciona. Cuando esté listo, pulse «Empezar con mi circuito» para abrir la configuración, donde puede cargar su PDF de ruta.'],
 setup_title:['Настроим план','Set up your route plan','Configuremos su plan de ruta'],setup_intro:['Укажите параметры района и добавьте собрания и группы. Эти данные станут основой календаря; позже всё можно изменить в настройках.','Enter your circuit details and add congregations and groups. This information starts your calendar; you can change it later in Settings.','Indique los datos del circuito y añada congregaciones y grupos. Esta información será la base del calendario; podrá cambiarla después en Ajustes.'],
 setup_general:['Ваш район','Your circuit','Su circuito'],setup_circuit:['Название района','Circuit name','Nombre del circuito'],setup_overseer:['Надзиратель (необязательно)','Overseer (optional)','Superintendente (opcional)'],setup_lang:['Язык приложения','App language','Idioma de la aplicación'],
 setup_home:['Откуда начинаются поездки','Where trips start','Desde dónde comienzan los viajes'],setup_home_name:['Город или название дома','City or home label','Ciudad o nombre de casa'],setup_home_coords:['Координаты дома (необязательно)','Home coordinates (optional)','Coordenadas de casa (opcional)'],setup_home_hint:['Координаты нужны для расчёта расстояний до собраний. Их можно добавить позже.','Coordinates are used to estimate distances to congregations. You can add them later.','Las coordenadas se usan para estimar distancias a las congregaciones. Puede añadirlas después.'],
 setup_rules:['Интервалы посещений','Visit intervals','Intervalos de visita'],setup_congs:['Собрания: цель / мин. / макс. (нед.)','Congregations: target / min / max (wk)','Congregaciones: objetivo / mín. / máx. (sem.)'],setup_groups:['Группы: цель / мин. / макс. (нед.)','Groups: target / min / max (wk)','Grupos: objetivo / mín. / máx. (sem.)'],
-setup_events:['Ежегодные события','Annual events','Eventos anuales'],setup_roster:['Список собраний и групп','Congregations and groups','Lista de congregaciones y grupos'],setup_roster_hint:['Добавьте строки вручную или импортируйте CSV. Формат строки: тип; название; город; дата(ы) посещения; координаты; адрес зала. Тип: c — собрание, g — группа. Дату, координаты и адрес можно оставить пустыми.','Enter rows manually or import a CSV. Line format: type; name; city; visit date(s); coordinates; hall address. Type: c for congregation, g for group. Date, coordinates, and address are optional.','Añada filas manualmente o importe un CSV. Formato: tipo; nombre; ciudad; fecha(s) de visita; coordenadas; dirección del salón. Tipo: c para congregación, g para grupo. La fecha, las coordenadas y la dirección son opcionales.'],setup_roster_example:['Пример: c; Central; Chicago; 2026-03-10; 41.88, -87.63; 123 Main St','Example: c; Central; Chicago; 2026-03-10; 41.88, -87.63; 123 Main St','Ejemplo: c; Central; Chicago; 2026-03-10; 41.88, -87.63; 123 Main St'],setup_roster_error:['Добавьте хотя бы одно собрание или группу. Проверьте строки: тип; название; город; дата; координаты; адрес.','Add at least one congregation or group. Check each line: type; name; city; date; coordinates; address.','Añada al menos una congregación o grupo. Revise cada línea: tipo; nombre; ciudad; fecha; coordenadas; dirección.'],setup_import_btn:['Импортировать из файла…','Import from file…','Importar desde archivo…'],setup_import_done:['Список загружен: {0}. Проверьте строки перед созданием плана.','Loaded {0} entries. Review the rows before creating the plan.','Se cargaron {0} entradas. Revise las filas antes de crear el plan.'],setup_import_error:['Не удалось прочитать список. Нужен CSV с колонкой Name.','Could not read the list. Use a CSV with a Name column.','No se pudo leer la lista. Use un CSV con una columna Name.'],setup_finish:['Создать мой план','Create my route plan','Crear mi plan de ruta'],setup_test_btn:['Первый запуск · тест','First launch · test','Primer inicio · prueba'],setup_test_hint:['Откроет мастер первого запуска в безопасном режиме: завершение не сохранит введённые данные.','Opens the first-run questionnaire in preview mode. Finishing won’t save the entered data.','Abre el cuestionario inicial en modo de prueba. Al finalizar no se guardarán los datos.'],setup_preview_done:['Тест первого запуска завершён. Введённые данные не сохранены.','First-launch simulation complete. The entered data was not saved.','Prueba de primer inicio completada. Los datos introducidos no se guardaron.'],
+setup_events:['Ежегодные события','Annual events','Eventos anuales'],setup_roster:['Список собраний и групп','Congregations and groups','Lista de congregaciones y grupos'],setup_roster_hint:['Проще всего загрузить PDF маршрута («Routing for …») — список заполнится сам. Можно также импортировать CSV или вписать строки вручную: тип; название; город; дата(ы) посещения; координаты; адрес зала. Тип: c — собрание, g — группа. Дату, координаты и адрес можно оставить пустыми.','The easiest way is to load your routing PDF (“Routing for …”) — the list fills in by itself. You can also import a CSV or type lines: type; name; city; visit date(s); coordinates; hall address. Type: c for congregation, g for group. Date, coordinates and address are optional.','Lo más fácil es cargar el PDF de ruta («Routing for …»): la lista se rellena sola. También puede importar un CSV o escribir líneas: tipo; nombre; ciudad; fecha(s) de visita; coordenadas; dirección del salón. Tipo: c para congregación, g para grupo. Fecha, coordenadas y dirección son opcionales.'],setup_roster_example:['Пример: c; Central; Chicago; 2026-03-10; 41.88, -87.63; 123 Main St','Example: c; Central; Chicago; 2026-03-10; 41.88, -87.63; 123 Main St','Ejemplo: c; Central; Chicago; 2026-03-10; 41.88, -87.63; 123 Main St'],setup_roster_error:['Добавьте хотя бы одно собрание или группу. Проверьте строки: тип; название; город; дата; координаты; адрес.','Add at least one congregation or group. Check each line: type; name; city; date; coordinates; address.','Añada al menos una congregación o grupo. Revise cada línea: tipo; nombre; ciudad; fecha; coordenadas; dirección.'],setup_import_btn:['Импорт CSV…','Import CSV…','Importar CSV…'],setup_pdf_btn:['Загрузить PDF маршрута…','Load routing PDF…','Cargar PDF de ruta…'],setup_example_btn:['Посмотреть на примере','Try with example data','Probar con datos de ejemplo'],setup_or:['или','or','o'],setup_pdf_done:['Из PDF: {0} собраний и групп, {1} посещений, {2} событий. Проверьте список и нажмите «Создать мой план».','From the PDF: {0} congregations and groups, {1} visits, {2} events. Check the list and click “Create my route plan”.','Del PDF: {0} congregaciones y grupos, {1} visitas, {2} eventos. Revise la lista y pulse «Crear mi plan de ruta».'],setup_rules_hint:['В неделях между посещениями. Мин. и макс. — границы «зелёной» нормы.','Weeks between visits. Min and max bound the “green” range.','Semanas entre visitas. Mín. y máx. delimitan el margen «verde».'],setup_err_type:['Строка {0}: в начале нужен тип — c (собрание) или g (группа).','Line {0}: start with the type — c (congregation) or g (group).','Línea {0}: empiece con el tipo — c (congregación) o g (grupo).'],setup_err_name:['Строка {0}: нужны название и город.','Line {0}: a name and a city are required.','Línea {0}: se necesitan nombre y ciudad.'],setup_err_date:['Строка {0}: дата «{1}» должна быть в формате ГГГГ-ММ-ДД.','Line {0}: date “{1}” must be YYYY-MM-DD.','Línea {0}: la fecha «{1}» debe tener el formato AAAA-MM-DD.'],setup_err_coords:['Строка {0}: координаты «{1}» не распознаны — нужно, например, «41.88, -87.63».','Line {0}: coordinates “{1}” weren’t recognised — use e.g. “41.88, -87.63”.','Línea {0}: no se reconocen las coordenadas «{1}»; use p. ej. «41.88, -87.63».'],setup_err_empty:['Добавьте хотя бы одно собрание или группу: загрузите PDF маршрута, импортируйте CSV или впишите строки вручную.','Add at least one congregation or group: load a routing PDF, import a CSV or type the lines in.','Añada al menos una congregación o grupo: cargue un PDF de ruta, importe un CSV o escriba las líneas.'],setup_err_rules:['Интервалы: минимум не может быть больше цели, а максимум — меньше цели.','Intervals: the minimum can’t exceed the target, and the maximum can’t be below it.','Intervalos: el mínimo no puede superar el objetivo ni el máximo quedar por debajo.'],setup_more_errors:['…и ещё ошибок: {0}','…and {0} more','…y {0} más'],setup_import_done:['Список загружен: {0}. Проверьте строки перед созданием плана.','Loaded {0} entries. Review the rows before creating the plan.','Se cargaron {0} entradas. Revise las filas antes de crear el plan.'],setup_import_error:['Не удалось прочитать список. Нужен CSV с колонкой Name.','Could not read the list. Use a CSV with a Name column.','No se pudo leer la lista. Use un CSV con una columna Name.'],setup_finish:['Создать мой план','Create my route plan','Crear mi plan de ruta'],setup_test_btn:['Первый запуск · тест','First launch · test','Primer inicio · prueba'],setup_test_hint:['Откроет мастер первого запуска в безопасном режиме: завершение не сохранит введённые данные.','Opens the first-run questionnaire in preview mode. Finishing won’t save the entered data.','Abre el cuestionario inicial en modo de prueba. Al finalizar no se guardarán los datos.'],setup_preview_done:['Тест первого запуска завершён. Введённые данные не сохранены.','First-launch simulation complete. The entered data was not saved.','Prueba de primer inicio completada. Los datos introducidos no se guardaron.'],
 wl_clean:['Начать со своим районом','Start with my circuit','Empezar con mi circuito'],wl_keep:['Это мои данные','This is my data','Son mis datos'],
 week:['Неделя','Week','Semana'],ics_saved_native:['Сохранено событий: {0}. Откройте файл .ics двойным щелчком — он добавится в Календарь.','{0} events saved. Double-click the .ics file to add it to Calendar.','{0} eventos guardados. Haga doble clic en el archivo .ics para añadirlo al Calendario.'],coords:['Координаты','Coordinates','Coordenadas'],intervals:['интервалы','intervals','intervalos'],next_eq:['следующее ≈','next ≈','próxima ≈'],service_year:['служебный год','service year','año de servicio']
 };
@@ -841,7 +846,7 @@ function renderOnboarding(){
   const gate=document.getElementById('setup-gate');if(state.onboardingComplete&&!onboardingPreview){gate.hidden=true;gate.innerHTML='';return}
   const S_=onboardingPreview?{...state.settings,circuit:'',overseer:'',c:{...DEF_SET.c},g:{...DEF_SET.g},annualCounts:{...DEF_SET.annualCounts}}:state.settings;
   const H=onboardingPreview?{name:'',lat:null,lon:null}:state.home;
-  const interval=(id,title,value)=>`<label>${title}<input type="number" min="4" max="156" step="1" id="${id}" value="${value}" required></label>`;
+  const interval=(id,title,value)=>`<input type="number" min="4" max="156" step="1" id="${id}" value="${value}" required aria-label="${esc(title)}">`;
   gate.innerHTML=`<form class="setup-card" id="setup-form">
     <h2 id="setup-title">${t('setup_title')}</h2><p>${t('setup_intro')}</p>
     <div class="setup-grid">
@@ -854,9 +859,13 @@ function renderOnboarding(){
         <label class="wide">${t('setup_home_name')}<input id="setup-home" required value="${esc(H.name||'')}"></label>
         <label class="wide">${t('setup_home_coords')}<input id="setup-home-coords" placeholder="39.78, -89.65" value="${H.lat!=null?esc(H.lat+', '+H.lon):''}"></label>
       </div><p class="note">${t('setup_home_hint')}</p></section>
-      <section class="setup-section"><h3>${t('setup_rules')}</h3><div class="setup-fields">
-        ${interval('setup-c-w',t('setup_congs'),S_.c.w)}${interval('setup-c-lo',t('s_min'),S_.c.lo)}${interval('setup-c-hi',t('s_max'),S_.c.hi)}
-        ${interval('setup-g-w',t('setup_groups'),S_.g.w)}${interval('setup-g-lo',t('s_min'),S_.g.lo)}${interval('setup-g-hi',t('s_max'),S_.g.hi)}
+      <section class="setup-section"><h3>${t('setup_rules')}</h3>
+        <div class="setup-rgrid"><span></span><b>${t('s_target')}</b><b>${t('s_min')}</b><b>${t('s_max')}</b>
+          <span>${t('cong_c')}</span>${interval('setup-c-w',t('cong_c')+' · '+t('s_target'),S_.c.w)}${interval('setup-c-lo',t('cong_c')+' · '+t('s_min'),S_.c.lo)}${interval('setup-c-hi',t('cong_c')+' · '+t('s_max'),S_.c.hi)}
+          <span>${t('grp_c')}</span>${interval('setup-g-w',t('grp_c')+' · '+t('s_target'),S_.g.w)}${interval('setup-g-lo',t('grp_c')+' · '+t('s_min'),S_.g.lo)}${interval('setup-g-hi',t('grp_c')+' · '+t('s_max'),S_.g.hi)}
+        </div>
+        <p class="note">${t('setup_rules_hint')}</p>
+        <div class="setup-fields" style="margin-top:10px">
         <label>${t('s_local')} (${t('km')})<input type="number" min="10" max="500" id="setup-local" value="${S_.local}"></label><label>${t('s_drive')} (${t('km')})<input type="number" min="100" max="3000" id="setup-drive" value="${S_.drive}"></label>
       </div><label style="margin-top:10px;flex-direction:row;align-items:flex-start"><input type="checkbox" id="setup-pioneer"${S_.flagPioneer?' checked':''}><span>${t('s_avoid_ev')}</span></label></section>
       <section class="setup-section"><h3>${t('setup_events')}</h3><div class="setup-fields">
@@ -864,14 +873,50 @@ function renderOnboarding(){
         <label>CA-br<input type="number" min="0" max="12" id="setup-caBr" value="${S_.annualCounts.caBr}"></label>
         <label class="wide">Convention<input type="number" min="0" max="12" id="setup-convention" value="${S_.annualCounts.convention}"></label>
       </div></section>
-      <section class="setup-section" style="grid-column:1/-1"><h3>${t('setup_roster')}</h3><div class="sbtns"><button class="btn" type="button" data-setup-import>${t('setup_import_btn')}</button><input type="file" id="setup-csv" accept=".csv,text/csv" hidden><span class="note" id="setup-import-msg"></span></div><label><textarea id="setup-roster" required placeholder="${esc(t('setup_roster_example'))}"></textarea></label><p class="note">${t('setup_roster_hint')}</p><p class="note bad" id="setup-error" hidden></p></section>
+      <section class="setup-section" style="grid-column:1/-1"><h3>${t('setup_roster')}</h3><div class="sbtns"><button class="btn primary" type="button" data-setup-pdf>${t('setup_pdf_btn')}</button><button class="btn" type="button" data-setup-import>${t('setup_import_btn')}</button>${onboardingPreview?'':`<span class="note setup-or">${t('setup_or')}</span><button class="btn" type="button" data-setup-example>${t('setup_example_btn')}</button>`}<input type="file" id="setup-csv" accept=".csv,text/csv" hidden><input type="file" id="setup-pdf" accept=".pdf,application/pdf" hidden></div><p class="note" id="setup-import-msg"></p><label><textarea id="setup-roster" placeholder="${esc(t('setup_roster_example'))}"></textarea></label><p class="note">${t('setup_roster_hint')}</p><p class="note bad" id="setup-error" hidden></p></section>
     </div><div class="setup-footer"><span class="note">${t('dates_tue')}</span><span class="sbtns">${onboardingPreview?`<button class="btn" type="button" data-setup-cancel>${t('cancel')}</button>`:''}<button class="btn primary" type="submit">${t('setup_finish')}</button></span></div>
   </form>`;
   gate.hidden=false;
 }
-document.getElementById('setup-gate').addEventListener('click',ev=>{if(ev.target.closest('[data-setup-import]')){document.getElementById('setup-csv').click();return}if(!ev.target.closest('[data-setup-cancel]'))return;onboardingPreview=false;setupImportedByLine.clear();renderOnboarding();renderSettings();show('settings')});
-let setupImportedByLine=new Map();
-document.getElementById('setup-gate').addEventListener('change',ev=>{if(ev.target.id!=='setup-csv')return;const file=ev.target.files&&ev.target.files[0];ev.target.value='';if(!file)return;const reader=new FileReader();reader.onload=()=>{
+document.getElementById('setup-gate').addEventListener('click',ev=>{
+  if(ev.target.closest('[data-setup-import]')){document.getElementById('setup-csv').click();return}
+  if(ev.target.closest('[data-setup-pdf]')){document.getElementById('setup-pdf').click();return}
+  if(ev.target.closest('[data-setup-example]')){loadExample();return}
+  if(!ev.target.closest('[data-setup-cancel]'))return;onboardingPreview=false;setupImportedByLine.clear();setupEvents=[];renderOnboarding();renderSettings();show('settings')});
+let setupImportedByLine=new Map(),setupEvents=[];
+function loadExample(){
+  state={ents:JSON.parse(JSON.stringify(DEFAULT)),events:DEFAULT_EVENTS.map(x=>[...x]),blocks:JSON.parse(JSON.stringify(DEFAULT_BLOCKS)),annualSlots:{},home:{name:'Springfield IL',lat:39.78,lon:-89.65},settings:{...state.settings,circuit:'XX-1 (example)'},draft:null,example:true,onboardingComplete:true};
+  setupImportedByLine=new Map();setupEvents=[];onboardingPreview=false;pendingDel=null;setMsg='';
+  save();applyStatic();renderAll(true);renderOnboarding();show('overview');
+}
+function startOver(){
+  state={ents:[],events:[],blocks:[],annualSlots:{},home:{name:'',lat:null,lon:null},settings:{...state.settings,circuit:''},draft:null,example:false,onboardingComplete:false};
+  setupImportedByLine=new Map();setupEvents=[];pendingDel=null;
+  save();applyStatic();renderAll(true);renderOnboarding();
+}
+async function setupFromPdf(file){
+  const msg=document.getElementById('setup-import-msg');msg.textContent=t('reading_pdf');
+  try{
+    const lines=await pdfLines(await file.arrayBuffer()),parsed=parseRouting(lines);
+    if(!parsed.visits.length){msg.textContent=t('pdf_empty');return}
+    const head=lines.map(l=>l.replace(/\t/g,' ')).find(l=>/routing\s+for\s+\S/i.test(l));
+    const circ=head?head.replace(/^.*?routing\s+for\s+/i,'').trim():'',cf=document.getElementById('setup-circuit');
+    if(circ&&!cf.value.trim())cf.value=circ;
+    const by=new Map();
+    parsed.visits.forEach(v=>{const key=v.kind+'|'+norm(v.who);let e=by.get(key);
+      if(!e){const parts=v.who.split(/\s+-\s+/);e={type:v.kind,name:parts[0].trim(),city:parts.slice(1).join(' - ').trim()||'—',addr:v.addr||'',visits:[]};by.set(key,e)}
+      if(!e.addr&&v.addr)e.addr=v.addr;if(!e.visits.includes(v.iso))e.visits.push(v.iso)});
+    setupImportedByLine=new Map();const out=[];let i=0;
+    [...by.values()].sort((a,b)=>a.type.localeCompare(b.type)||a.name.localeCompare(b.name)||a.city.localeCompare(b.city)).forEach(e=>{
+      e.visits.sort();const line=[e.type,e.name,e.city,e.visits.join(', '),'',e.addr].join('; ').replace(/;\s*$/,'');
+      out.push(line);setupImportedByLine.set(line,{...e,id:'e'+Date.now().toString(36)+(i++)})});
+    const seen=new Set();setupEvents=parsed.events.filter(x=>{const k=x[0]+'|'+x[1];if(seen.has(k))return false;seen.add(k);return true});
+    document.getElementById('setup-roster').value=out.join('\n');
+    msg.textContent=t('setup_pdf_done',out.length,parsed.visits.length,setupEvents.length);
+    document.getElementById('setup-error').hidden=true;
+  }catch(err){msg.textContent=t('pdf_fail')+': '+(err&&err.message||err)}
+}
+document.getElementById('setup-gate').addEventListener('change',ev=>{if(ev.target.id==='setup-pdf'){const f=ev.target.files&&ev.target.files[0];ev.target.value='';if(f)setupFromPdf(f);return}if(ev.target.id!=='setup-csv')return;const file=ev.target.files&&ev.target.files[0];ev.target.value='';if(!file)return;const reader=new FileReader();reader.onload=()=>{
   const rows=parseCSV(String(reader.result||''));if(rows.length<2){document.getElementById('setup-import-msg').textContent=t('csv_empty');return}
   const head=rows[0].map(x=>x.trim().toLowerCase()),col=name=>head.indexOf(name.toLowerCase());if(col('Name')<0){document.getElementById('setup-import-msg').textContent=t('setup_import_error');return}
   const get=(row,name)=>{const i=col(name);return i<0?'':String(row[i]||'').trim()};setupImportedByLine=new Map();const lines=[];
@@ -888,23 +933,27 @@ document.getElementById('setup-gate').addEventListener('change',ev=>{if(ev.targe
 };reader.onerror=()=>{document.getElementById('setup-import-msg').textContent=t('read_fail')};reader.readAsText(file)});
 document.getElementById('setup-gate').addEventListener('submit',ev=>{
   if(ev.target.id!=='setup-form')return;ev.preventDefault();const form=ev.target,error=document.getElementById('setup-error');
-  const entries=[];let invalid=false;
-  form.querySelector('#setup-roster').value.split(/\r?\n/).map(x=>x.trim()).filter(x=>x&&!x.startsWith('#')).forEach((line,i)=>{
+  const entries=[],errors=[];
+  const showErrors=list=>{error.innerHTML=list.slice(0,5).map(esc).join('<br>')+(list.length>5?'<br>'+esc(t('setup_more_errors',list.length-5)):'');error.hidden=false;error.scrollIntoView({block:'center',behavior:'smooth'})};
+  form.querySelector('#setup-roster').value.split(/\r?\n/).forEach((raw,i)=>{
+    const line=raw.trim(),ln=i+1;if(!line||line.startsWith('#'))return;
     const imported=setupImportedByLine.get(line);if(imported){entries.push({...imported,id:'e'+Date.now().toString(36)+i,visits:[...imported.visits]});return}
-    const p=line.split(';').map(x=>x.trim()),kind=/^(g|group|группа)$/i.test(p[0])?'g':/^(c|congregation|собрание)$/i.test(p[0])?'c':'';
-    if(!kind||!p[1]||!p[2]){invalid=true;return}
+    const p=line.split(';').map(x=>x.trim()),kind=/^(g|group|группа|grupo)$/i.test(p[0])?'g':/^(c|congregation|собрание|congregación|congregacion)$/i.test(p[0])?'c':'';
+    if(!kind){errors.push(t('setup_err_type',ln));return}
+    if(!p[1]||!p[2]){errors.push(t('setup_err_name',ln));return}
     const e={id:'e'+Date.now().toString(36)+i,type:kind,name:p[1],city:p[2],visits:[]};
-    if(p[3]){const ds=p[3].split(/[;,\s]+/).filter(Boolean);if(ds.some(d=>!isIso(d))){invalid=true;return}e.visits=ds}
-    if(p[4]){const mm=p[4].match(/(-?\d+(?:\.\d+)?)\s*[,; ]\s*(-?\d+(?:\.\d+)?)/);if(!mm){invalid=true;return}e.lat=+mm[1];e.lon=+mm[2]}
+    if(p[3]){const ds=p[3].split(/[,\s]+/).filter(Boolean),bad=ds.find(d=>!isIso(d));if(bad){errors.push(t('setup_err_date',ln,bad));return}e.visits=ds}
+    if(p[4]){const mm=p[4].match(/(-?\d+(?:\.\d+)?)\s*[,; ]\s*(-?\d+(?:\.\d+)?)/);if(!mm){errors.push(t('setup_err_coords',ln,p[4]));return}e.lat=+mm[1];e.lon=+mm[2]}
     if(p[5])e.addr=p.slice(5).join('; ');entries.push(e)
   });
-  if(invalid||!entries.length){error.textContent=t('setup_roster_error');error.hidden=false;return}
+  if(errors.length){showErrors(errors);return}
+  if(!entries.length){showErrors([t('setup_err_empty')]);return}
   const n=id=>Math.max(0,parseInt(form.querySelector('#'+id).value,10)||0),num=id=>parseInt(form.querySelector('#'+id).value,10);
   const c={w:num('setup-c-w'),lo:num('setup-c-lo'),hi:num('setup-c-hi')},g={w:num('setup-g-w'),lo:num('setup-g-lo'),hi:num('setup-g-hi')};
-  if(c.lo>c.w||c.hi<c.w||g.lo>g.w||g.hi<g.w){error.textContent=t('setup_roster_error');error.hidden=false;return}
+  if([c.w,c.lo,c.hi,g.w,g.lo,g.hi].some(x=>!Number.isFinite(x)||x<1)||c.lo>c.w||c.hi<c.w||g.lo>g.w||g.hi<g.w){showErrors([t('setup_err_rules')]);return}
   const homeCoords=form.querySelector('#setup-home-coords').value.match(/(-?\d+(?:\.\d+)?)\s*[,; ]\s*(-?\d+(?:\.\d+)?)/);
   if(onboardingPreview){onboardingPreview=false;setMsg=t('setup_preview_done');renderOnboarding();renderAll(true);renderSettings();show('settings');return}
-  state.ents=entries;state.events=[];state.blocks=[];state.annualSlots={};state.draft=null;state.example=false;
+  state.ents=entries;state.events=setupEvents.map(x=>[...x]);setupEvents=[];setupImportedByLine=new Map();state.blocks=[];state.annualSlots={};state.draft=null;state.example=false;
   state.home={name:form.querySelector('#setup-home').value.trim(),lat:homeCoords?+homeCoords[1]:null,lon:homeCoords?+homeCoords[2]:null};
   state.settings.circuit=form.querySelector('#setup-circuit').value.trim();state.settings.overseer=form.querySelector('#setup-overseer').value.trim();
   state.settings.lang=form.querySelector('#setup-lang').value;lang=state.settings.lang;state.settings.c=c;state.settings.g=g;
@@ -1596,8 +1645,8 @@ setEl.addEventListener('click',async ev=>{const b=ev.target.closest('button');if
   if(b.id==='s-rules-reset'){S_.c={...DEF_SET.c};S_.g={...DEF_SET.g};setRules();save();applyStatic();renderAll(true);return}
   if(b.id==='s-backup'){const data=JSON.stringify({app:'route-planner',v:1,saved:new Date().toISOString(),state:{...state,draft:null}},null,1);setMsg=await saveFile(fileTag()+'-backup-'+ISO(Date.now())+'.json',data,data);renderSettings();return}
   if(b.id==='s-restore'){document.getElementById('json-file').click();return}
-  if(b.id==='s-clean'){if(pendingDel==='clean'){state={ents:[],events:[],blocks:[],annualSlots:{},home:{name:'',lat:null,lon:null},settings:{...S_,circuit:''},draft:null,example:false};pendingDel=null;setMsg=t('s_cleaned');save();applyStatic();renderAll(true)}else{pendingDel='clean';renderSettings()}return}
-  if(b.id==='s-example'){if(pendingDel==='example'){state={ents:JSON.parse(JSON.stringify(DEFAULT)),events:DEFAULT_EVENTS.map(x=>[...x]),blocks:JSON.parse(JSON.stringify(DEFAULT_BLOCKS)),annualSlots:{},home:{name:'Springfield IL',lat:39.78,lon:-89.65},settings:{...S_,circuit:'XX-1 (example)'},draft:null,example:true};pendingDel=null;setMsg='';save();applyStatic();renderAll(true)}else{pendingDel='example';renderSettings()}return}});
+  if(b.id==='s-clean'){if(pendingDel==='clean'){setMsg=t('s_cleaned');startOver()}else{pendingDel='clean';renderSettings()}return}
+  if(b.id==='s-example'){if(pendingDel==='example'){loadExample()}else{pendingDel='example';renderSettings()}return}});
 document.getElementById('json-file').addEventListener('change',ev=>{const f=ev.target.files&&ev.target.files[0];ev.target.value='';if(!f)return;const rd=new FileReader();
   rd.onload=()=>{try{const j=JSON.parse(String(rd.result)),s_=j&&j.state;if(!s_||!Array.isArray(s_.ents))throw new Error('format');
       state={ents:s_.ents,events:s_.events||[],blocks:s_.blocks||[],annualSlots:s_.annualSlots||{},home:s_.home||state.home,settings:Object.assign({},DEF_SET,s_.settings||{}),draft:null,example:false};
@@ -1610,7 +1659,7 @@ function renderWelcome(){const el=document.getElementById('welcome');
   el.innerHTML='';}
 document.getElementById('welcome').addEventListener('click',ev=>{const b=ev.target.closest('[data-wl]');if(!b)return;
   if(b.dataset.wl==='keep'){state.example=false;save();renderWelcome();return}
-  if(b.dataset.wl==='clean'){state={ents:[],events:[],blocks:[],annualSlots:{},home:{name:'',lat:null,lon:null},settings:{...state.settings,circuit:''},draft:null,example:false};save();applyStatic();renderAll(true);show('settings')}});
+  if(b.dataset.wl==='clean'){startOver()}});
 
 /* ================= Круговой календарь ================= */
 let wSel=null;const WC=320;

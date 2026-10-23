@@ -1,8 +1,8 @@
 {
-  "webVersion": 2,
+  "webVersion": 3,
   "appVersion": "1.0",
   "minAppVersion": "1.0",
   "file": "update/index.html",
-  "sha256": "ff30dbed380046d63604d7db51726ca588853ef84a3a0349d28f72b8ea3a8a93",
-  "notes": "Обновления из публичного репозитория, вымышленный пример"
+  "sha256": "4e7503830082da54ad54ed70e963f0f47e6fcfcab78ddc7a25e4e1a6a912569b",
+  "notes": "Первый запуск: загрузка PDF маршрута, просмотр на примере, понятные ошибки"
 }
