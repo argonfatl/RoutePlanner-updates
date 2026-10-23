@@ -1,8 +1,8 @@
 {
-  "webVersion": 3,
+  "webVersion": 4,
   "appVersion": "1.0",
   "minAppVersion": "1.0",
   "file": "update/index.html",
-  "sha256": "4e7503830082da54ad54ed70e963f0f47e6fcfcab78ddc7a25e4e1a6a912569b",
-  "notes": "Первый запуск: загрузка PDF маршрута, просмотр на примере, понятные ошибки"
+  "sha256": "7f80409755b20dea74397e34ba9d0f86c7206714fda351f6fb7cc58f302b1fc2",
+  "notes": "Убрана кнопка «Загрузить пример» в настройках; «районный старейшина»"
 }
