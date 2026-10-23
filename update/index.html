@@ -567,6 +567,37 @@ header.appbar .btn:hover{background:var(--soft);color:var(--ink)}
 @media(max-width:760px){.weeks-layout{grid-template-columns:1fr}.week-coverage{grid-column:1;grid-row:1;position:sticky;top:0;max-height:30vh;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px}.coverage-head{grid-column:1/-1;margin:0}.coverage-group{min-width:0;padding:6px 0}.coverage-names{max-height:68px;overflow:auto}#weeks{grid-column:1;grid-row:2}}
 @media(max-width:900px){.overview-columns{grid-template-columns:1fr}.wrap.app-shell{grid-template-columns:190px minmax(0,1fr)}}
 @media(max-width:720px){.overview-focus{grid-template-columns:1fr}.focus-stat{min-height:65px}.overview-columns{grid-template-columns:1fr}.wrap.app-shell{grid-template-columns:64px minmax(0,1fr)}}
+
+/* ── Design improvements ── */
+
+/* 1. Nav icons via mask-image (replaces dot ::before) */
+.side-nav button::before{content:"";display:inline-block;width:15px;height:15px;flex-shrink:0;margin:0 11px 0 1px;background-color:var(--muted);mask-size:contain;mask-repeat:no-repeat;mask-position:center;border:none;border-radius:0;opacity:1;transition:background-color .15s}
+.side-nav button:hover::before{background-color:var(--ink)}
+.side-nav button.active::before{background-color:var(--accent)}
+.side-nav button[data-v="overview"]::before{mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='6' height='6' rx='1.5' fill='black'/%3E%3Crect x='9' y='1' width='6' height='6' rx='1.5' fill='black'/%3E%3Crect x='1' y='9' width='6' height='6' rx='1.5' fill='black'/%3E%3Crect x='9' y='9' width='6' height='6' rx='1.5' fill='black'/%3E%3C/svg%3E")}
+.side-nav button[data-v="plan"]::before{mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='2' width='14' height='2.5' rx='1.25' fill='black'/%3E%3Crect x='1' y='7' width='10' height='2.5' rx='1.25' fill='black'/%3E%3Crect x='1' y='12' width='12' height='2.5' rx='1.25' fill='black'/%3E%3C/svg%3E")}
+.side-nav button[data-v="trips"]::before{mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.2 7l1.3-3.3A1.5 1.5 0 0 1 5.9 2.8h4.2a1.5 1.5 0 0 1 1.4.9L12.8 7' stroke='black' stroke-width='1.6' fill='none' stroke-linejoin='round'/%3E%3Crect x='1.5' y='7' width='13' height='5' rx='1.6' fill='black'/%3E%3Crect x='3' y='12' width='2.4' height='2' rx='.8' fill='black'/%3E%3Crect x='10.6' y='12' width='2.4' height='2' rx='.8' fill='black'/%3E%3C/svg%3E")}
+.side-nav button[data-v="data"]::before{mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='2' y='2' width='12' height='12' rx='2' stroke='black' stroke-width='1.6' fill='none'/%3E%3Cpath d='M5 6h6M5 9h4' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")}
+.side-nav button[data-v="blocks"]::before{mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='2' y='3' width='12' height='10' rx='2' stroke='black' stroke-width='1.6' fill='none'/%3E%3Cpath d='M5 3V1.5M11 3V1.5M2 7h12' stroke='black' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")}
+.side-nav button[data-v="settings"]::before{mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 4h12M2 8h12M2 12h12' stroke='black' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='5' cy='4' r='2' fill='black'/%3E%3Ccircle cx='11' cy='8' r='2' fill='black'/%3E%3Ccircle cx='7' cy='12' r='2' fill='black'/%3E%3C/svg%3E")}
+@media(max-width:720px){.side-nav button{justify-content:center;padding:10px 4px;font-size:0}.side-nav button::before{margin:0;width:18px;height:18px}}
+
+/* 2. Focus stat cards: top color stripe */
+.focus-stat{overflow:hidden}
+.focus-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--line);border-radius:10px 10px 0 0}
+.focus-stat.bad::before{background:var(--bad)}
+.focus-stat.good::before{background:var(--ok)}
+
+/* 3. Attention card alerts: left-border instead of box-border */
+.attention-card .alerts{gap:0;border-top:1px solid var(--line)}
+.attention-card .alert{margin-top:0;border-radius:0;border:0;border-left:3px solid var(--bad);border-bottom:1px solid var(--line);background:linear-gradient(to right,color-mix(in srgb,var(--bad) 5%,transparent),transparent 65%);padding:9px 12px 9px 13px}
+.attention-card .alert:last-child{border-bottom:0}
+.attention-card .alert.special{border-left-color:var(--special);background:linear-gradient(to right,color-mix(in srgb,var(--special) 5%,transparent),transparent 65%)}
+
+/* 4. Due list: month group header */
+.due-month-header{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--muted);padding:7px 0 5px;border-top:1px solid var(--line)}
+.due-month-header+li{border-top:0}
+.due-list li:first-child{border-top:0}
 </style>
 </head>
 <body>
@@ -1056,7 +1087,10 @@ function renderStats(m){
     <div class="focus-stat ${m.conflicts.length?'bad':'good'}"><span>${t('st_conf')}</span><b>${m.conflicts.length}</b><small class="focus-detail">${esc(conflictPlace)}</small>${firstConflict?`<button class="text-action" type="button" data-show-week="${conflictDate}">${t('show_week')}</button>`:''}<i>${m.conflicts.length?'!':'✓'}</i></div>
     <div class="focus-stat"><span>${t('st_cg')}</span><b>${c.length} <small>/ ${m.ents.length-c.length}</small></b><i>↗</i></div>
     <div class="focus-stat"><span>${t('st_ok')}</span><b>${okN}</b><i>✓</i></div>`;
-  document.getElementById('overview-due').innerHTML=upcoming.length?`<ol class="due-list">${upcoming.map(e=>`<li><span class="due-marker ${e.type}"></span><div class="due-name"><b>${esc(e.name)}</b><small>${esc(e.city)}</small></div><time class="mono ${e.next<TODAY?'overdue':''}">${F(e.next,false)}</time></li>`).join('')}</ol>`:`<p class="overview-empty">${t('ov_empty')}</p>`;
+  if(upcoming.length){const mk=e=>{const d=new Date(e.next);return d.getUTCFullYear()*12+d.getUTCMonth()},keys=upcoming.map(mk),grouped=new Set(keys).size<keys.length;let last=null,rows='';
+    upcoming.forEach((e,i)=>{const k=keys[i];if(grouped&&k!==last){rows+=`<li class="due-month-header">${MON_F[lang][k%12]} ${Math.floor(k/12)}</li>`;last=k}
+      rows+=`<li><span class="due-marker ${e.type}"></span><div class="due-name"><b>${esc(e.name)}</b><small>${esc(e.city)}</small></div><time class="mono ${e.next<TODAY?'overdue':''}">${F(e.next,!grouped&&Math.floor(k/12)!==new Date(TODAY).getUTCFullYear())}</time></li>`});
+    document.getElementById('overview-due').innerHTML=`<ol class="due-list">${rows}</ol>`}else document.getElementById('overview-due').innerHTML=`<p class="overview-empty">${t('ov_empty')}</p>`;
   const a=[],nm=e=>esc(e.name)+' ('+esc(e.city)+')';
   m.conflicts.forEach(cf=>a.push(`<div class="alert location-alert"><span><b>${t('al_week',F(cf.week+DAY))}</b> ${cf.items.map(i=>nm(i.e)).join(t('and'))} — ${t('al_two')}</span><button class="text-action" type="button" data-show-week="${ISO(cf.week)}">${t('show_week')}</button></div>`));
   const spE=m.ents.filter(e=>e.sp);
